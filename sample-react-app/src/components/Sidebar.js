@@ -12,11 +12,12 @@ function Sidebar({ currentStep, setCurrentStep, completedSteps }) {
 
   return (
     <div className="sidebar">
-      {completedSteps.map((_, index) => (
+      {completedSteps.map((completed, index) => (
         <button
           key={index}
           onClick={() => changeStep(index)}
           className={`sidebar-item ${index === currentStep ? 'active' : ''}`}
+          style={{ opacity: completed || index <= currentStep ? 1 : 0.5 }} // Lower opacity for not yet available steps
         >
           Step {index + 1}
         </button>
